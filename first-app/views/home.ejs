@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+ <head>
+         
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBvgALqhClKBVDF7-1gyumStnBhPhF75ws",
+    authDomain: "login-page-cf50a.firebaseapp.com",
+    databaseURL: "https://login-page-cf50a.firebaseio.com",
+    projectId: "login-page-cf50a",
+    storageBucket: "login-page-cf50a.appspot.com",
+    messagingSenderId: "470107849478"
+  };
+  firebase.initializeApp(config);
+</script>
+ </head>
+<body>
+        <h3>Login Form NODE + EJS + Express</h3>
+        <p>Login with Firebase</p>       
+        
+        <h3 id="google-displayname"></h3>
+        <img id="google-pic"src=""/>
+        <p id="google-email"></p>
+        
+        
+        
+        
+        <button onclick= {signInWithGoogle()}>
+                Sign in with google
+        </button>
+        <script>
+                function checkifLoggedIn()
+                {
+                        if(localStorage.getItem('firebase_idToken')){
+                                document.getElementid('gone')
+                                .setAtrribute('style', 'display: none; visibility: hidden')
+                                 document.getElementid('google-pic')
+                                .setAtrribute('src', localStorage.getItem('google_photo'))
+                        }
+                        else{
+                                document.getElementid('gone')
+                                .setAtrribute('style', 'display: inline-block; visibility: visible')
+                               
+                        }
+                        
+                }
+                checkifLoggedIn()
+                
+                
+        
+                function signInWithGoogle(){
+                        var googleAuthProvider = new firebase.auth.GoogleAuthProvider
+                        firebase.auth().signInWithPopup(googleAuthProvider)
+                        .then(function(data){
+                                console.log(data)
+                                
+                                
+                                var idToken = data.credential.idToken
+                                localStorage.setItem('firebase_idToken', idToken)
+                                localStorage.setItem('google_photo', photoURL)
+                                localStorage.serItem('google_name', myName)
+                                var myName= 'Pratik Jain'
+                                var photoURL = data.additionalUserInfo.profile.picture
+                                
+                                document.getElementid('google-pic')
+                                        .setAtrribute('src', photoURL)
+                                document.write('<li><span>5</span>'+ myName +'</li>');
+                               
+                                
+                        })
+                        .catch(function(error)
+                        {
+                                console.log(error)
+                        })
+                        
+                        }
+                        
+                        
+                
+        </script>
+</body>
+
+</html>
