@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-         
+         <link rel="stylesheet" type="text/css" href="/login.css">  
 <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -17,17 +17,17 @@
 </script>
  </head>
 <body>
-        <h3>Login Form NODE + EJS + Express</h3>
+        <!-- <h3>Login Form NODE + EJS + Express</h3>
         <p>Login with Firebase</p>       
         
         <h3 id="google-displayname"></h3>
         <img id="google-pic"src=""/>
         <p id="google-email"></p>
+         -->
         
         
         
-        
-        <button onclick= {signInWithGoogle()}>
+        <!-- <button onclick= {signInWithGoogle()}>
                 Sign in with google
         </button>
         <script>
@@ -56,7 +56,6 @@
                         .then(function(data){
                                 console.log(data)
                                 
-                                
                                 var idToken = data.credential.idToken
                                 localStorage.setItem('firebase_idToken', idToken)
                                 localStorage.setItem('google_photo', photoURL)
@@ -79,7 +78,79 @@
                         
                         
                 
-        </script>
+        </script> -->
+ <div class="login-wrap">
+                <div class="login-html">
+                    <div class="log-box container">
+                        <img class="logo" src="/image/logo.png">
+                    </div>
+                    <h1>ELLICIT 2018</h1>
+                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+                    <label for="tab-1" class="tab">Sign In</label>
+                    <input id="tab-2" type="radio" name="tab" class="sign-up">
+                    <label for="tab-2" class="tab">Sign Up</label>
+                    <div class="login-form">
+                        <div class="sign-in-htm">
+                            <form action="/login" method="POST">
+                        
+                            <div class="group">
+                                <label for="username" class="label">Email</label>
+                                <input id="username" name="username" type="email" class="input">
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label">Password</label>
+                                <input id="password" name="password" type="password" class="input" data-type="password">
+                            </div>
+                            <div class="group">
+                                <input type="submit" class="button" value="Sign In">
+                            </div>
+                            </form>
+                            <div class="hr"></div>
+                            <div class="foot-lnk">
+                                <a href="#forgot">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div class="sign-up-htm">
+                                <form action="/register" method="POST">
+                            <div class="group">
+                            <div class="group">
+                                <label for="name" class="label">Name</label>
+                                <input id="name" name="name" type="text" class="input">
+                            </div>
+        
+                            <div class="group">
+                                <label for="username" class="label">Email Address</label>
+                                <input id="username" name = "username" type="email" class="input">
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label">Password</label>
+                                <input id="pass" name="password" type="password" class="input" data-type="password">
+                            </div>
+                            <div class="group">
+                                <label for="phone" class="label">Phone number</label>
+                                <input id="phone" name="phone" type="tell" class="input" data-type="password">
+                            </div>
+                            <div class="group">
+                                <label for="phone" class="label">College ID</label>
+                                <input id="College_id" name="College_id" type="text" class="input" data-type="password">
+                            </div>
+                            <div class="group">
+                                <label for="phone" class="label">College</label>
+                                <input id="College" name="College" type="text" class="input" data-type="password">
+                            </div>
+    
+                            <div class="group">
+                                <input type="submit" class="button" value="Sign Up">
+                            </div>
+                        </form>
+                            <div class="hr"></div>
+                            <div class="foot-lnk">
+                                <label for="tab-1">Already Member?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
 </body>
 
 </html>
