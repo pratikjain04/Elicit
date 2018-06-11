@@ -32,6 +32,10 @@ app.get("/home", (req, res)=>{
         // res.render("index.ejs");
 })
 
+app.post('/event_reg', (req, res)=>{
+         res.render("event_reg.ejs ");  
+})
+
 app.post('/register', (req, res)=>    {
         console.log(req.body); 
     });
