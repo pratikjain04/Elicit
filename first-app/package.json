@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@firebase/polyfill": "^0.3.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "firebase-admin": "^5.12.1",
