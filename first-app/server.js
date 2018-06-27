@@ -41,21 +41,26 @@ function isLoggedin(req, res, next){
 }
 
 
-app.get('/',function(request,response){
+app.get('/play',function(request,response){
        // response.send("<h1>First App</h1>")
-          response.render('home.ejs')
+          response.render('play.ejs')
 })
+
 
 
 app.get('/login',function(request,response){
         // response.send("<h1>First App</h1>")
-           response.render('home.ejs')
+        //    response.render('home.ejs')
  })
 
 app.get("/home", (req, res)=>{    
-        // res.sendFile(__dirname+"/index1.html");
+        res.sendFile(__dirname+"/index1.html");
         // console.log("user id: " + firebase.auth().currentUser.uid);
         // res.render("index.ejs");
+})
+
+app.post('/event_reg', (req, res)=>{
+         res.render("event_reg.ejs ");  
 })
 
 app.post('/register', (req, res)=>    {
