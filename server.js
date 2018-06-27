@@ -41,7 +41,7 @@ function isLoggedin(req, res, next){
 }
 
 
-app.get('/play',function(request,response){
+app.get('/',function(request,response){
        // response.send("<h1>First App</h1>")
           response.render('play.ejs')
 })
@@ -50,7 +50,7 @@ app.get('/play',function(request,response){
 
 app.get('/login',function(request,response){
         // response.send("<h1>First App</h1>")
-        //    response.render('home.ejs')
+           response.render('home.ejs')
  })
 
 app.get("/home", (req, res)=>{    
