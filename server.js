@@ -4,18 +4,17 @@ var     express = require('express'),
         bodyParser = require('body-parser');
 
 var firebase = require('firebase');
-
 var config = {
-        apiKey: "AIzaSyBvgALqhClKBVDF7-1gyumStnBhPhF75ws",
-        authDomain: "login-page-cf50a.firebaseapp.com",
-        databaseURL: "https://login-page-cf50a.firebaseio.com",
-        projectId: "login-page-cf50a",
-        storageBucket: "login-page-cf50a.appspot.com",
-        messagingSenderId: "470107849478"
-      };
-    
-      firebase.initializeApp(config);
-      
+        apiKey: "AIzaSyAeSzB5j39YWR0_X-Q2HGrI-Z3d8h8Tw8Q",
+        authDomain: "elicit-project.firebaseapp.com",
+        databaseURL: "https://elicit-project.firebaseio.com",
+        projectId: "elicit-project",
+        storageBucket: "elicit-project.appspot.com",
+        messagingSenderId: "380806788122"
+        };
+firebase.initializeApp(config);
+var database=firebase.database();
+          
 
 app.use(require("express-session")({        
         secret: "iloveprogramming",
@@ -59,8 +58,10 @@ app.get("/home", (req, res)=>{
         // res.render("index.ejs");
 })
 
-app.post('/event_reg', (req, res)=>{
-         res.render("event_reg.ejs ");  
+app.get("/test", (req, res)=>{res.sendFile(__dirname+"/test.html")});
+
+app.get('/event_reg', (req, res)=>{
+         res.render("event_reg.ejs");  
 })
 
 app.post('/register', (req, res)=>    {
@@ -76,6 +77,25 @@ app.post('/register', (req, res)=>    {
         console.log(firebase.auth().currentUser);
     });
 
+
+
+app.get('/events/:event_name', (req, res)=>
+{
+        event_name=req.params.event_name;
+        firebase.database().ref('events/'+event_name.toLowerCase()).once('value').then(function(snapshot)
+        {
+                if(snapshot.val())
+                {
+                        event=snapshot.val();
+                        res.render("events.ejs", event);
+                }
+                else
+                {
+                        res.redirect(__dirname+"/404");
+                }
+
+        });
+})
 var port = process.env.PORT || 8001
 
 app.listen(port, function(){
